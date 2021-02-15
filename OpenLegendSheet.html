@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<title id="title">Open Legend | Character</title>
+<link rel="stylesheet" href="StyleSheet.css">
+
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+    <div class="inline">
+        <input type="file" id="fileObject" onchange="NewFileChosen()" />
+        <button onclick="LoadData()">Load</button>
+        <button onclick="SaveData()">Save</button>
+    </div>
+
+    <div class="row" style="margin-bottom: 200px;">
+
+        <div class="column" style="width: 20%;">
+
+            <h2>Attributes</h2> <!-- Attributes-->
+
+            <div class="row" style="margin-bottom: 5px;">
+                <span style="float: left; margin-left: 5px;">
+                    <label for="APointTotal" id="spentAPoints">
+                        0 /
+                    </label>
+                    <input type="number" id="APointTotal" style="width: 40px;" min="0" max="999" value="40" onchange="ChangeMaxA(this.value)" />
+                    <label for="APointTotal" id="overASpent" style="margin-left:20px; color:red; visibility:hidden">OVER POINTS BUDGET</label>
+                </span>
+            </div> <!--Attribute Poitns-->
+
+            <table style="margin-bottom: 20px;">
+
+                <tr>
+                    <td>Name</td>
+                    <td>Score</td>
+                    <td>Cost</td>
+                    <td>Dice</td>
+                </tr>
+
+                <tr>
+                    <th>Physical</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr> <!--Physical-->
+                <tr>
+                    <td>Agility</td>
+                    <td><input type="number" min="0" max="10" value="0" id="Agility" onchange="AbilityValueChange(this.id, this.value)"></td>
+                    <td id="AgilityCost">0</td>
+                    <td id="AgilityDice">-</td>
+                </tr> <!--Agility-->
+                <tr>
+                    <td>Fortitude</td>
+                    <td><input type="number" min="0" max="10" value="0" id="Fortitude" onchange="AbilityValueChange(this.id, this.value)" /></td>
+                    <td id="FortitudeCost">0</td>
+                    <td id="FortitudeDice">-</td>
+                </tr> <!--Fortitude-->
+                <tr>
+                    <td>Might</td>
+                    <td><input type="number" min="0" max="10" value="0" id="Might" onchange="AbilityValueChange(this.id, this.value)" /></td>
+                    <td id="MightCost">0</td>
+                    <td id="MightDice">-</td>
+                </tr> <!--Might-->
+
+                <tr>
+                    <th>Mental</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr> <!--Mental-->
+                <tr>
+                    <td>Learning</td>
+                    <td><input type="number" min="0" max="10" value="0" id="Learning" onchange="AbilityValueChange(this.id, this.value)" /></td>
+                    <td id="LearningCost">0</td>
+                    <td id="LearningDice">-</td>
+                </tr> <!--Learning-->
+                <tr>
+                    <td>Logic</td>
+                    <td><input type="number" min="0" max="10" value="0" id="Logic" onchange="AbilityValueChange(this.id, this.value)" /></td>
+                    <td id="LogicCost">0</td>
+                    <td id="LogicDice">-</td>
+                </tr> <!--Logic-->
+                <tr>
+                    <td>Perception</td>
+                    <td><input type="number" min="0" max="10" value="0" id="Perception" onchange="AbilityValueChange(this.id, this.value)" /></td>
+                    <td id="PerceptionCost">0</td>
+                    <td id="PerceptionDice">-</td>
+                </tr> <!--Perception-->
+                <tr>
+                    <td>Will</td>
+                    <td><input type="number" min="0" max="10" value="0" id="Will" onchange="AbilityValueChange(this.id, this.value)" /></td>
+                    <td id="WillCost">0</td>
+                    <td id="WillDice">-</td>
+                </tr> <!--Will-->
+
+                <tr>
+                    <th>Social</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr> <!--Social-->
+                <tr>
+                    <td>Deception</td>
+                    <td><input type="number" min="0" max="10" value="0" id="Deception" onchange="AbilityValueChange(this.id, this.value)" /></td>
+                    <td id="DeceptionCost">0</td>
+                    <td id="DeceptionDice">-</td>
+                </tr> <!--Deception-->
+                <tr>
+                    <td>Persuasion</td>
+                    <td><input type="number" min="0" max="10" value="0" id="Persuasion" onchange="AbilityValueChange(this.id, this.value)" /></td>
+                    <td id="PersuasionCost">0</td>
+                    <td id="PersuasionDice">-</td>
+                </tr> <!--Persuasion-->
+                <tr>
+                    <td>Presence</td>
+                    <td><input type="number" min="0" max="10" value="0" id="Presence" onchange="AbilityValueChange(this.id, this.value)" /></td>
+                    <td id="PresenceCost">0</td>
+                    <td id="PresenceDice">-</td>
+                </tr> <!--Presence-->
+
+                <tr>
+                    <th>Extraordinary</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr> <!--Extraordinary-->
+                <tr>
+                    <td>Alteration</td>
+                    <td><input type="number" min="0" max="10" value="0" id="Alteration" onchange="AbilityValueChange(this.id, this.value)" /></td>
+                    <td id="AlterationCost">0</td>
+                    <td id="AlterationDice">-</td>
+                </tr> <!--Alteration-->
+                <tr>
+                    <td>Creation</td>
+                    <td><input type="number" min="0" max="10" value="0" id="Creation" onchange="AbilityValueChange(this.id, this.value)" /></td>
+                    <td id="CreationCost">0</td>
+                    <td id="CreationDice">-</td>
+                </tr> <!--Creation-->
+                <tr>
+                    <td>Energy</td>
+                    <td><input type="number" min="0" max="10" value="0" id="Energy" onchange="AbilityValueChange(this.id, this.value)" /></td>
+                    <td id="EnergyCost">0</td>
+                    <td id="EnergyDice">-</td>
+                </tr> <!--Energy-->
+                <tr>
+                    <td>Entropy</td>
+                    <td><input type="number" min="0" max="10" value="0" id="Entropy" onchange="AbilityValueChange(this.id, this.value)" /></td>
+                    <td id="EntropyCost">0</td>
+                    <td id="EntropyDice">-</td>
+                </tr> <!--Entropy-->
+                <tr>
+                    <td>Influence</td>
+                    <td><input type="number" min="0" max="10" value="0" id="Influence" onchange="AbilityValueChange(this.id, this.value)" /></td>
+                    <td id="InfluenceCost">0</td>
+                    <td id="InfluenceDice">-</td>
+                </tr> <!--Influence-->
+                <tr>
+                    <td>Movement</td>
+                    <td><input type="number" min="0" max="10" value="0" id="Movement" onchange="AbilityValueChange(this.id, this.value)" /></td>
+                    <td id="MovementCost">0</td>
+                    <td id="MovementDice">-</td>
+                </tr> <!--Movement-->
+                <tr>
+                    <td>Prescience</td>
+                    <td><input type="number" min="0" max="10" value="0" id="Prescience" onchange="AbilityValueChange(this.id, this.value)" /></td>
+                    <td id="PrescienceCost">0</td>
+                    <td id="PrescienceDice">-</td>
+                </tr> <!--Prescience-->
+                <tr>
+                    <td>Protection</td>
+                    <td><input type="number" min="0" max="10" value="0" id="Protection" onchange="AbilityValueChange(this.id, this.value)" /></td>
+                    <td id="ProtectionCost">0</td>
+                    <td id="ProtectionDice">-</td>
+                </tr> <!--Protection-->
+
+            </table> <!--Attribute Table-->
+
+            <div class="row" style="margin-bottom:5px;">
+                <span style="float: left; margin-left: 5px;">
+                    <label for="FPointTotal" id="spentFPoints">
+                        Feat Points: 0 /
+                    </label>
+                    <input type="number" id="FPointTotal" style="width: 40px;" min="0" max="999" value="6" onchange="ChangeMaxF(this.value)" />
+                    <label for="FPointTotal" id="overFSpent" style="margin-left:20px; color:red; visibility:hidden">OVER POINTS BUDGET</label>
+                </span>
+            </div> <!--Feat Points-->
+
+            <table id="featTable">
+
+                <tr>
+                    <th>Feats</th>
+                    <th>Cost</th>
+                    <th></th>
+                </tr>
+
+            </table> <!--Feat Table-->
+
+            <div>
+                <h3 style="margin-bottom: 5px;">Add Feat</h3>
+                <div id="addToMe"></div>
+            </div> <!--Feat Selector-->
+
+
+        </div> <!--Left-->
+
+        <div class="column" style="width: 70%; padding-left: 5%; padding-right: 5%;">
+
+            <div class="row" style="margin-bottom: 20px;">
+                <span style="float:left;">
+                    <label for="CharName">
+                        <input type="text" style="display:block; background-color: #fcfcfc; border: 0; border-bottom: 2px solid lightgrey; outline-color: #fcfcfc; margin-right:30px;" id="CharName" value="Character" />
+                        Character Name
+                    </label>
+                </span>
+
+                <span style="float:left;">
+                    <label for="PlayerName">
+                        <input type="text" style="display:block; background-color: #fcfcfc; border: 0; border-bottom: 2px solid lightgrey; outline-color: #fcfcfc; margin-right:30px;" id="PlayerName" value="Player" />
+                        Player Name
+                    </label>
+                </span>
+
+                <span style="float: left;">
+                    <label for="Archetype">
+                        <input type="text" style="display: block; background-color: #fcfcfc; border: 0; border-bottom: 2px solid lightgrey; outline-color: #fcfcfc; margin-right:30px;" id="Archetype" value="Archetype" />
+                        Archetype
+                    </label>
+                </span>
+
+            </div> <!--Names-->
+
+            <div class="row" style="margin-bottom: 50px;">
+
+                <span style="float:left;">
+                    <label for="Level">
+                        <input type="number" style="display:block; background-color: #fcfcfc; border: 0; border-bottom: 2px solid lightgrey; outline-color: #fcfcfc; margin-right:100px; " min="1" max="99" id="Level" value="1" />
+                        Character Level
+                    </label>
+                </span>
+
+                <span style="float:left;">
+                    <label for="XP">
+                        <input type="number" style="display:block; background-color: #fcfcfc; border: 0; border-bottom: 2px solid lightgrey; outline-color: #fcfcfc; margin-right:30px;" min="0" max="99" id="XP" value="0" />
+                        Character XP
+                    </label>
+                </span>
+
+            </div> <!--XP-->
+
+            <div class="row" style="margin-bottom: 40px;">
+
+                <div class="column tooltip" style="border: 2px solid #595959; border-radius: 20px; width: 10%; text-align:center; margin-right:25px;">
+                    <span class="tooltiptext">Agility + Might + Armour + Feats + 10</span>
+                    <label for="Guard" style="font-size: 30px; ">Guard</label>
+                    <h1 id="Guard" style="margin-top: 5px; margin-left: 5px;">10</h1>
+
+                </div> <!--Guard-->
+                <div class="column tooltip" style="border: 2px solid #595959; border-radius: 20px; width: 10%; text-align:center; margin-right:25px;">
+                    <span class="tooltiptext">Fortitude + Will + Feats + 10</span>
+                    <label for="Tough" style="font-size: 30px; ">Toughness</label>
+                    <h1 id="Tough" style="margin-top: 5px; margin-left: 5px;">10</h1>
+
+                </div> <!--Tough-->
+                <div class="column tooltip" style="border: 2px solid #595959; border-radius: 20px; width: 10%; text-align:center; margin-right:25px;">
+                    <span class="tooltiptext">Presence + Will + Feats + 10</span>
+                    <label for="Resolve" style="font-size: 30px; ">Resolve</label>
+                    <h1 id="Resolve" style="margin-top: 5px; margin-left: 5px;">10</h1>
+
+                </div> <!--Resolve-->
+
+            </div> <!--Defence-->
+
+            <div class="row" style=" margin-bottom: 40px;">
+
+                <div class="column tooltip" style="border: 2px solid #595959; border-radius: 20px; width: 10%; text-align:center; margin-right:25px;">
+                    <span class="tooltiptext">2x(Fortitude + Will + Presence) + 10</span>
+                    <label for="HP" style="font-size:30px;">Hit Points</label>
+                    <h1 id="HP" style="margin-top: 5px; margin-left: 5px; margin-bottom:50px;">10</h1>
+                    <p style="font-size: 20px; margin-top: -40px;" id="maxHP">max: 10</p>
+
+                </div> <!--HP-->
+                <div class="column" style="width: 10%; text-align:center; margin-right:25px;">
+
+                    <div class="inline" style="margin-top: 10px; margin-bottom: 4px;">
+                        <input type="number" min="0" max="99" value="0" id="healVal" />
+                        <button onclick="HealHP()">Heal</button>
+                    </div>
+                    <div class="inline" style="margin-bottom: 4px;">
+                        <input type="number" min="0" max="99" value="0" id="damageVal" />
+                        <button onclick="DamageHP()">Damage</button>
+                    </div>
+                    <div class="inline" style="margin-bottom: 4px;">
+                        <input type="number" min="0" max="99" value="0" id="lethalVal" />
+                        <button onclick="LethalDamageHP()">Lethal</button>
+                    </div>
+                    <div class="inline" style="margin-bottom: 4px;">
+                        <input type="number" min="0" max="99" value="10" id="setHPVal" />
+                        <button onclick="SetHP()">Set HP</button>
+                    </div>
+                    <button onclick="ResetHP()">Max HP</button>
+
+                </div> <!--HP Buttons-->
+                <div class="column tooltip" style="border: 2px solid #595959; border-radius: 20px; width: 10%; text-align:center; margin-right:25px;">
+                    <span class="tooltiptext">d20 + Agility Dice</span>
+                    <label for="Initiative" style="font-size: 30px;">Initiative</label>
+                    <h1 id="Initiative" style="margin-top: 5px; margin-left: 5px; font-size: 30px;">1d20 +-</h1>
+
+                </div> <!--Initiative-->
+
+            </div> <!--HP/Init-->
+
+            <div class="row" style="margin-bottom:40px;">
+
+                <div class="column" style="border: 2px solid #595959; border-radius: 20px; width: 10%; text-align:center; margin-right:25px;">
+                    <label for="Legend" style="font-size:30px;">Legend</label>
+                    <div class="row">
+                        <div class="column" style="width: 80%; text-align:center;">
+                            <h1 id="Legend" style="margin-top: 5px; margin-left: 5px;">0</h1>
+                        </div>
+                        <div class="column" style="width: 15%; text-align:center;">
+                            <button onclick="ChangeInnerStatByVal('Legend', 1);">+</button>
+                            <button onclick="ChangeInnerStatByVal('Legend', -1);">-</button>
+                        </div>
+                    </div>
+                </div> <!--Legend-->
+                <div class="column" style="border: 2px solid #595959; border-radius: 20px; width: 10%; text-align:center; margin-right:25px;">
+                    <label for="Wealth" style="font-size:30px;">Wealth</label>
+                    <div class="row">
+                        <div class="column" style="width: 80%; text-align:center;">
+                            <h1 id="Wealth" style="margin-top: 5px; margin-left: 5px;">2</h1>
+                        </div>
+                        <div class="column" style="width: 20%; text-align:center;">
+                            <button onclick="ChangeInnerStatByVal('Wealth', 1);">+</button>
+                            <button onclick="ChangeInnerStatByVal('Wealth', -1);">-</button>
+                        </div>
+                    </div>
+                </div> <!--Wealth-->
+                <div class="column" style="border: 2px solid #595959; border-radius: 20px; width: 10%; text-align:center; margin-right:25px;">
+                    <label for="Speed" style="font-size:30px;">Speed</label>
+                    <div class="row">
+                        <div class="column" style="width: 80%; text-align:center;">
+                            <h1 id="Speed" style="margin-top: 5px; margin-left: 5px;">30</h1>
+                        </div>
+                        <div class="column" style="width: 20%; text-align:center;">
+                            <button onclick="ChangeInnerStatByVal('Speed', 5);">+</button>
+                            <button onclick="ChangeInnerStatByVal('Speed', -5);">-</button>
+                        </div>
+                    </div>
+                </div> <!--Speed-->
+
+            </div> <!--Stats-->
+
+            <div class="row">
+                <div class="column" style="align-content: center; text-align: center; margin-right: 20px; border-right: 2px solid black;">
+                    <h3>Armour</h3>
+                    <div class="row" style="margin-bottom: 20px; ">
+                        <label style="margin-right: 20px; " contenteditable="true" id="ArmName">Armour Name</label>
+                        <label>rating:</label>
+                        <input type="number" min="0" max="99" value="0" style="margin-right: 15px;" onchange="UpdateGuard()" id="ArmRating" />
+                    </div>
+                    <h3>Guard from Feats</h3>
+                    <input type="number" min="0" max="99" value="0" style="margin-right: 15px;" onchange="UpdateGuard()" id="FeatGuard" />
+                </div>
+                <div class="column" style="align-content: center; text-align: center; margin-right: 20px; border-right: 2px solid black;">
+                    <h3>HP</h3>
+                    <div class="row" style="margin-bottom: 20px; ">
+                        <label style="margin-right: 20px;">HP from Feats:</label>
+                        <input type="number" min="0" max="99" value="0" style="margin-right: 15px;" onchange="UpdateHP()" id="FeatHP" />
+                    </div>
+                    <h3>Toughness from Feats</h3>
+                    <input type="number" min="0" max="99" value="0" style="margin-right: 15px;" onchange="UpdateToughness()" id="FeatTough" />
+                </div>
+                <div class="column" style="align-content: center; text-align: center;">
+                    <h3>Speed</h3>
+                    <div class="row" style="margin-bottom: 20px; ">
+                        <label style="margin-right: 20px;">Speed from other Sources:</label>
+                        <input type="number" min="0" max="99" value="0" style="margin-right: 15px;" step="5" onchange="UpdateSpeed()" id="FeatSpeed" />
+                    </div>
+                    <h3>Resolve from Feats</h3>
+                    <input type="number" min="0" max="99" value="0" style="margin-right: 15px;" onchange="UpdateResolve()" id="FeatRes" />
+                </div>
+            </div> <!--Armour/Hp/Speed/Guard/Tough/Resolve from Feats-->
+
+            <div class="row">
+                <h2>Actions</h2>
+                <div>
+                    <table style="width: 50%;" id="ActionTable">
+                        <tr>
+                            <th style="width:20%;">Action</th>
+                            <th>Description</th>
+                            <th style="width:15%;">Attribute</th>
+                            <th style="width:5%;"></th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row" style="width:50%;">
+                    <div class="column" style="width:96%;"><p></p></div>
+                    <div class="column" style="width:4%;"></div>
+                    <button onclick="AddAction()">+</button>
+                </div>
+            </div> <!--Actions-->
+
+            <div class="row">
+                <h2>Inventory</h2>
+                <div>
+                    <table style="width: 50%;" id="ItemTable">
+                        <tr>
+                            <th style="width:25%;">Item</th>
+                            <th>Description</th>
+                            <th style="width:5%;">WL</th>
+                            <th style="width:5%;"></th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row" style="width:50%;">
+                    <div class="column" style="width:96%;"><p></p></div>
+                    <div class="column" style="width:4%;"></div>
+                    <button onclick="AddItem()">+</button>
+                </div>
+            </div> <!--Equipment-->
+
+        </div> <!--Right-->
+
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    var feats;
+
+    var abilities = ["Agility", "Fortitude", "Might", "Learning", "Logic", "Perception", "Will", "Deception", "Persuasion", "Presence", "Alteration", "Creation", "Energy", "Entropy", "Influence", "Movement", "Prescience", "Protection"];
+
+    var costs = [0, 1, 3, 6, 10, 15, 21, 28, 36, 45, 55];
+    var dice = ["-", "1d4", "1d6", "1d8", "1d10", "2d6", "2d8", "2d10", "3d8", "3d10", "4d8"];
+
+    var totalAPoints = 40;
+    var aPointsSpent = 0;
+
+    var totalFPoints = 6;
+    var fPointsSpent = 0;
+
+    var curHP = 10;
+    var maxHP = 10;
+
+    var armourRating = 0;
+
+    var armourFromFeats = 0;
+    var toughFromFeats = 0;
+    var resolveFromFeats = 0;
+
+    var legend = 0;
+    var wealth = 2;
+    var speed = 30;
+
+    var featsTaken = [0];
+
+    var file;
+    var sel = document.createElement("select");
+
+    var fTable = document.getElementById("featTable");
+    var acTable = document.getElementById("ActionTable");
+    var iTable = document.getElementById("ItemTable");
+
+    sel.onchange = function () {
+
+        var row = document.createElement("tr");
+        var name = document.createElement("td");
+        var cost = document.createElement("td");
+        var but = document.createElement("button");
+        name.innerHTML = feats[sel.value].name;
+        name.value = sel.value;
+        cost.innerHTML = feats[sel.value].cost;
+        but.id = fTable.children.length;
+        but.onclick = function () {
+            var featIndex = -1;
+            for (var i = 1; i < featsTaken.length; i++) {
+                if (parseInt(featsTaken[i]) == parseInt(fTable.children[but.id].firstChild.value)) {
+                    featIndex = i;
+                    break;
+                }
+            }
+            if (featIndex > 0) {
+                featsTaken.splice(featIndex, 1);
+                featsTaken[0] = featsTaken.length - 1;
+            }
+
+            fPointsSpent -= parseInt(fTable.children[but.id].children[1].innerHTML);
+            UpdateFeatPoints();
+
+            fTable.removeChild(fTable.children[but.id]);
+
+            for (var i = 0; i < fTable.children.length; i++) {
+                fTable.children[i].lastChild.id = i;
+            }
+
+
+        };
+        but.innerHTML = "X";
+
+        row.appendChild(name);
+        row.appendChild(cost);
+        row.appendChild(but);
+
+        fTable.appendChild(row);
+
+        featsTaken[0] = featsTaken.push(sel.value) - 1;
+
+        fPointsSpent += parseInt(cost.innerHTML);
+
+        UpdateFeatPoints();
+
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        PopulateFeats();
+    });
+
+    function RefreshActionButtons() {
+        for (var i = 1; i < acTable.children.length; i++) {
+            acTable.children[i].lastChild.name = i;
+        }
+    }
+
+    function RefreshItemButtons() {
+        for (var i = 1; i < iTable.children.length; i++) {
+            iTable.children[i].lastChild.name = i;
+        }
+    }
+
+    function AddAction() {
+        var name = document.createElement("td");
+        name.contentEditable = "true";
+        name.textContent = "Action Name";
+        var desc = document.createElement("td");
+        //desc.textContent = "Action Description";
+        var tex = document.createElement("textarea");
+        tex.name = "correct";
+        tex.style.width = "95%";
+        desc.appendChild(tex);
+        var attr = document.createElement("td");
+        attr.contentEditable = "true";
+        attr.textContent = "Attribute";
+        var but = document.createElement("button");
+        but.innerHTML = "X";
+        but.name = acTable.children.length;
+        but.onclick = function () {
+            acTable.removeChild(acTable.children[but.name]);
+            for (var i = 0; i < acTable.children.length; i++) {
+                acTable.children[i].lastChild.name = i;
+            }
+            RefreshActionButtons()
+        };
+
+        var tr = document.createElement("tr");
+        tr.appendChild(name);
+        tr.appendChild(desc);
+        tr.appendChild(attr);
+        tr.appendChild(but);
+
+        acTable.appendChild(tr);
+
+    }
+
+    function AddItem() {
+        var name = document.createElement("td");
+        name.contentEditable = "true";
+        name.textContent = "Item Name";
+        var desc = document.createElement("td");
+        //desc.textContent = "Action Description";
+        var tex = document.createElement("textarea");
+        tex.name = "correct";
+        tex.style.width = "95%";
+        desc.appendChild(tex);
+        var attr = document.createElement("td");
+        attr.contentEditable = "true";
+        attr.textContent = "0";
+        var but = document.createElement("button");
+        but.innerHTML = "X";
+        but.name = iTable.children.length;
+        but.onclick = function () {
+            iTable.removeChild(iTable.children[but.name]);
+            for (var i = 0; i < iTable.children.length; i++) {
+                iTable.children[i].lastChild.name = i;
+            }
+            RefreshItemButtons();
+        };
+
+        var tr = document.createElement("tr");
+        tr.appendChild(name);
+        tr.appendChild(desc);
+        tr.appendChild(attr);
+        tr.appendChild(but);
+
+        iTable.appendChild(tr);
+
+    }
+
+    function PopulateFeats() {
+
+        DefineFeats();
+        while (sel.firstChild) {
+            sel.removeChild(sel.lastChild);
+        }
+        for (var i = 0; i < feats.length; i++) {
+            var ft = feats[i];
+            var op = document.createElement("option");
+            op.textContent = ft.name;
+            op.value = i;
+            sel.appendChild(op);
+        }
+        document.getElementById("addToMe").appendChild(sel);
+    }
+
+    function DefineFeats() {
+        feats = [
+            new Feature("Alternate Form I", 3, "Half of your primary form's attribute points (rounded up), and 3 feat points."),
+            new Feature("Alternate Form II", 3, "Same attribute points as your primary form, and 3 feat points less than your primary form."),
+            new Feature("Area Manipulation I", 1, "For each tier of this feat you possess, you can omit a single 5-foot square from being targeted as part of an area attack."),
+            new Feature("Area Manipulation II", 1, "For each tier of this feat you possess, you can omit a single 5-foot square from being targeted as part of an area attack."),
+            new Feature("Area Manipulation III", 1, "For each tier of this feat you possess, you can omit a single 5-foot square from being targeted as part of an area attack."),
+            new Feature("Area Manipulation IV", 1, "For each tier of this feat you possess, you can omit a single 5-foot square from being targeted as part of an area attack."),
+            new Feature("Area Manipulation V", 1, "For each tier of this feat you possess, you can omit a single 5-foot square from being targeted as part of an area attack."),
+            new Feature("Armor Mastery I", 3, "The Fortitude prerequisite for wearing armor is reduced by 1. When wearing armor, you get a +1 armor bonus to your Guard defense."),
+            new Feature("Armor Mastery II", 3, "The Fortitude prerequisite for wearing armor is reduced by 2. When wearing armor, you get a +2 armor bonus to your Guard defense. Any movement penalty is reduced by 5'."),
+            new Feature("Attack Redirection", 3, "When you make a defend action and your roll exceeds the attacker's action roll, you can choose to redirect the attack to a target that is neither you, nor the attacker. The original attack roll does not change, only the target. If the attack was a melee attack, you can redirect it to anyone within 5' of you (as opposed to within 5' of the attacker)."),
+            new Feature("Attack Specialization I", 3, "When you take this feat, select one weapon or attack type. You gain advantage 1 per tier of this feat for any damaging attack made with your chosen attack type. This bonus does not apply to bane attacks or boon invocations."),
+            new Feature("Attack Specialization II", 3, "When you take this feat, select one weapon or attack type. You gain advantage 1 per tier of this feat for any damaging attack made with your chosen attack type. This bonus does not apply to bane attacks or boon invocations."),
+            new Feature("Attack Specialization III", 3, "When you take this feat, select one weapon or attack type. You gain advantage 1 per tier of this feat for any damaging attack made with your chosen attack type. This bonus does not apply to bane attacks or boon invocations."),
+            new Feature("Attack Specialization IV", 3, "When you take this feat, select one weapon or attack type. You gain advantage 1 per tier of this feat for any damaging attack made with your chosen attack type. This bonus does not apply to bane attacks or boon invocations."),
+            new Feature("Attack Specialization V", 3, "When you take this feat, select one weapon or attack type. You gain advantage 1 per tier of this feat for any damaging attack made with your chosen attack type. This bonus does not apply to bane attacks or boon invocations."),
+            new Feature("Attack Specialization VI", 3, "When you take this feat, select one weapon or attack type. You gain advantage 1 per tier of this feat for any damaging attack made with your chosen attack type. This bonus does not apply to bane attacks or boon invocations."),
+            new Feature("Attack Specialization VII", 3, "When you take this feat, select one weapon or attack type. You gain advantage 1 per tier of this feat for any damaging attack made with your chosen attack type. This bonus does not apply to bane attacks or boon invocations."),
+            new Feature("Attack Specialization VIII", 3, "When you take this feat, select one weapon or attack type. You gain advantage 1 per tier of this feat for any damaging attack made with your chosen attack type. This bonus does not apply to bane attacks or boon invocations."),
+            new Feature("Attack Specialization IX", 3, "When you take this feat, select one weapon or attack type. You gain advantage 1 per tier of this feat for any damaging attack made with your chosen attack type. This bonus does not apply to bane attacks or boon invocations."),
+            new Feature("Attack Specialization X", 3, "When you take this feat, select one weapon or attack type. You gain advantage 1 per tier of this feat for any damaging attack made with your chosen attack type. This bonus does not apply to bane attacks or boon invocations."),
+            new Feature("Attribute Substitution I", 2, "Making non-attack, non-defend, non-invocation action rolls, Calculating hit points, defenses, and other secondary statistics, Meeting feat prerequisites, Other situations at the GM's discretion"),
+            new Feature("Attribute Substitution II", 2, "Making attack and defend action rolls, Invoking banes and boons"),
+            new Feature("Bane Focus", 3, "Choose a bane that you can invoke. When your roll on a damaging attack exceeds the target's defense by 5 or more (as opposed to the usual 10), you can inflict this bane for free. Each attack is still only capable of inflicting a single bane. Furthermore, when making a bane attack to inflict your chosen bane, you gain advantage 2 on the bane attack roll."),
+            new Feature("Battle Trance", 3, "As a free action on your turn, you may enter a battle trance. While entranced, you have advantage 1 on all attacks. Additionally, your Toughness and Resolve defenses are increased by 3. If your total armor bonus is less than 3, it becomes 3. If you take three consecutive turns without making an attack roll against an enemy creature, the battle trance ends. When the battle trance ends, you automatically suffer 1 level of the fatigue bane."),
+            new Feature("Battlefield Opportunist I", 2, "You may make an additional opportunity attack per round for each tier of this feat you possess. You can only make one opportunity attack per triggering action (e.g., you cannot make multiple attacks against the same foe when they leave your threatened space)."),
+            new Feature("Battlefield Opportunist II", 2, "You may make an additional opportunity attack per round for each tier of this feat you possess. You can only make one opportunity attack per triggering action (e.g., you cannot make multiple attacks against the same foe when they leave your threatened space)."),
+            new Feature("Battlefield Opportunist III", 2, "You may make an additional opportunity attack per round for each tier of this feat you possess. You can only make one opportunity attack per triggering action (e.g., you cannot make multiple attacks against the same foe when they leave your threatened space)."),
+            new Feature("Battlefield Opportunist IV", 2, "You may make an additional opportunity attack per round for each tier of this feat you possess. You can only make one opportunity attack per triggering action (e.g., you cannot make multiple attacks against the same foe when they leave your threatened space)."),
+            new Feature("Battlefield Opportunist V", 2, "You may make an additional opportunity attack per round for each tier of this feat you possess. You can only make one opportunity attack per triggering action (e.g., you cannot make multiple attacks against the same foe when they leave your threatened space)."),
+            new Feature("Battlefield Punisher", 3, "Choose a bane you can inflict. Any time you use the defend action with an attribute that could inflict the chosen bane and deal 10 damage via the Battlefield Retribution feat, you may choose to automatically afflict the attacker with the chosen bane."),
+            new Feature("Battlefield Retribution", 2, "When you use the defend interrupt action, you also deal damage to the attacker equal to the amount by which your action roll exceeds the attacker's roll."),
+            new Feature("Boon Access", "1-9", "When you choose this feat, choose one boon that you do not have the requisite attribute to invoke. The cost of this feat is equal to the power level of the chosen boon. You can invoke the chosen boon despite lacking the necessary attribute. For invocation rolls, treat your attribute score as the power level of the boon. If the boon has multiple attribute prerequisite options, you choose one attribute when you take this feat. Additionally, you count as having access to the chosen boon for the purpose of meeting feat prerequisites, and your attribute for meeting such prerequisites is equal to the power level of the boon. The Boon Access feat bypasses the normal attribute score restrictions based on character level, so a first level character could spend all 6 of their feat points to begin play with access to a power level 6 boon. You may acquire this feat multiple times. Each time, select a new boon."),
+            new Feature("Boon Focus I", 3, "When you invoke the chosen boon on a single target, you succeed automatically and do not need to make an action roll. You can invoke the boon at any of the power levels you could access via your other means. If the invocation is not a single target, success is not automatic, but you get advantage 2 on the action roll to invoke the boon."),
+            new Feature("Boon Focus II", 3, "You gain advantage 3 on your action roll to invoke the boon if you are not single-targeting. Additionally, you may invoke the boon one time increment faster, as follows: If the invocation time is a major action or move action, it becomes a minor action. If the invocation time is 1 focus action, it becomes 1 major action. If the invocation time is 1 minute, it becomes 1 focus action. If the invocation time is 10 minutes, it becomes 1 minute. If the invocation time is 1 hour, it becomes 10 minutes. If the invocation time is 8 hours, it becomes 1 hour. If the invocation time for a boon is 1 minor action, it can be invoked only once as a minor action. Beyond that it can be invoked by expending a move or major action."),
+            new Feature("Boon Focus III", 3, "The effect at tier 3 varies based on the duration of the boon. See Feats page"),
+            new Feature("Breakfall I", 2, "As long as you are conscious and able to act, reduce all falling damage by half."),
+            new Feature("Breakfall II", 2, "As long as you are conscious and able to act, you do not suffer falling damage."),
+            new Feature("Brutal Intimidation", 1, "If you're able to make a show of physical force, you can use your Might attribute in place of Persuasion for the action roll."),
+            new Feature("Climbing", 1, "You gain a climb speed equal to your base speed and can scale horizontal and vertical surfaces, even climb upside-down, with no fear of falling."),
+            new Feature("Combat Follow-through", 2, "Every time you bring an enemy to zero hit points with a Might or Agility attack, you can immediately make an extra attack as a free action."),
+            new Feature("Combat Momentum", 1, "Every time you bring an enemy to zero hit points with a Might or Agility attack, you can immediately move up to your normal speed / teleport as a free action."),
+            new Feature("Companion I", 2, "Your companion has a total of 20 attribute points plus 4 per level of your character."),
+            new Feature("Companion II", 2, "Your companion receives 3 feat points."),
+            new Feature("Companion III", 2, "Your companion has a total of 30 attribute points plus 6 per level of your character. In addition, you can optionally grant feats to your companion. In order to do so, you spend your own feat points and the companion receives the feat instead of you. The companion, not you, must meet all feat prerequisites. Any math related to these feats are calculated based on the companion's attributes, feats, etc. If you have spent feat points this way and would gain feat points from any other effect, those feat points are reduced by the number of feat points you have granted to your companion."),
+            new Feature("Craft Mundane Item I", 2, "You can craft items equal to your wealth level."),
+            new Feature("Craft Mundane Item II", 2, "You can craft items equal to your wealth level + 1."),
+            new Feature("Craft Extraordinary Item I", 3, "Maximum wealth level equals attribute minus 2"),
+            new Feature("Craft Extraordinary Item II", 3, "Maximum wealth level equals attribute minus 1"),
+            new Feature("Craft Extraordinary Item III", 3, "Maximum wealth level equals attribute"),
+            new Feature("Crushing Blow", 3, "Any time that you deal damage to an enemy, in addition to pushing them 5 feet (if you choose) from the Overpowering Strike feat, you can also knock them down in the space where the forced move ends; the target suffers the effects of the knockdown bane."),
+            new Feature("Death Blow I", 3, "If you damage an enemy with a Lethal Strike and their total HP is 5 or less after the attack, then you can choose to reduce them to zero HP instead. In addition, you can choose to silence any enemy reduced to zero hit points by an attack from you."),
+            new Feature("Death Blow II", 3, "Your death blow HP threshold increases from 5 to 10. In addition, on a successful Lethal Strike, the stunned bane is automatically inflicted without counting against your usual 1 bane per attack limit."),
+            new Feature("Deathless Trance", 3, "While in a battle trance you cannot be knocked unconscious. All damage dealt to you should be recorded, possibly resulting in a negative hit point total. Despite any amount of damage, you remain conscious for as long as you can sustain the battle trance. When the battle trance ends, if your hit points are below zero, you collapse unconscious. If you are not healed to zero or more hit points within 1 round of your battle trance ending, you die."),
+            new Feature("Defensive Mastery", 3, "When wielding a weapon or implement with the defensive property, you gain an additional +1 armor bonus. In addition, the defensive value of the item is increased by 1 when you wield it. So defensive 1 becomes defensive 2 and defensive 2 becomes defensive 3."),
+            new Feature("Defensive Reflexes I", 2, "Any time you use the defend action, you gain advantage 1 on the action roll per tier you possess of this feat."),
+            new Feature("Defensive Reflexes II", 2, "Any time you use the defend action, you gain advantage 1 on the action roll per tier you possess of this feat."),
+            new Feature("Defensive Reflexes III", 2, "Any time you use the defend action, you gain advantage 1 on the action roll per tier you possess of this feat."),
+            new Feature("Defensive Reflexes IV", 2, "Any time you use the defend action, you gain advantage 1 on the action roll per tier you possess of this feat."),
+            new Feature("Defensive Reflexes V", 2, "Any time you use the defend action, you gain advantage 1 on the action roll per tier you possess of this feat."),
+            new Feature("Defensive Reflexes VI", 2, "Any time you use the defend action, you gain advantage 1 on the action roll per tier you possess of this feat."),
+            new Feature("Defensive Reflexes VII", 2, "Any time you use the defend action, you gain advantage 1 on the action roll per tier you possess of this feat."),
+            new Feature("Defensive Reflexes VIII", 2, "Any time you use the defend action, you gain advantage 1 on the action roll per tier you possess of this feat."),
+            new Feature("Defensive Reflexes IX", 2, "Any time you use the defend action, you gain advantage 1 on the action roll per tier you possess of this feat."),
+            new Feature("Destructive Trance", 3, "When you make an attack roll in a battle trance, all of the dice in your dice pool explode on either maximum or the number 1 below maximum (though the total is still the number rolled). This means that d4s explode on a 3 or 4, d6s explode on a 5 or 6, d8s explode on a 7 or 8, and so on."),
+            new Feature("Diehard", 2, "Once per day, an attack that would reduce you to less than 1 HP, reduces you to 1 HP instead."),
+            new Feature("Energy Resistance I", 2, "Your defense scores are increased by 3 against the chosen energy type."),
+            new Feature("Energy Resistance II", 2, "Your defense scores are increased by 6 against the chosen energy type."),
+            new Feature("Energy Resistance III", 2, "Your defense scores are increased by 9 against the chosen energy type."),
+            new Feature("Energy Resistance IV", 2, "You are immune to damage and harmful effects from the chosen energy type."),
+            new Feature("Evasive Footwork", 2, "When you move from a space adjacent to an enemy to another space not adjacent to that enemy, the enemy does not get the usual opportunity attack."),
+            new Feature("Extraordinary Defense I", 3, "You gain a +1 bonus to all defenses for each tier you have in this feat. This increases your Toughness, Guard, and Resolve defenses."),
+            new Feature("Extraordinary Defense II", 3, "You gain a +1 bonus to all defenses for each tier you have in this feat. This increases your Toughness, Guard, and Resolve defenses."),
+            new Feature("Extraordinary Defense III", 3, "You gain a +1 bonus to all defenses for each tier you have in this feat. This increases your Toughness, Guard, and Resolve defenses."),
+            new Feature("Extraordinary Focus", 3, "With the approval of your GM, choose a focus from which your power with a single extraordinary attribute stems. Some possibilities include a wand, a digital psi amplifier, a crystal ball, a spell book, a holy symbol, a weapon, your voice, or an animal familiar. You cannot use the selected extraordinary attribute without your focus. The focus heightens your power and for the purposes of determining your attribute dice for action rolls, you treat the chosen attribute as if it was one greater. For all purposes outside of attribute dice, your ability score remains unchanged (feats, banes, boons, etc.)."),
+            new Feature("Extraordinary Healing", 3, "When invoking the heal boon, you can choose to take one hour instead of the usual invocation time. If you do, you heal an amount of lethal damage equal to the total healing from the successful boon invocation. This lethal damage is healed in addition to the normal hit point damage that your boon heals."),
+            new Feature("Fast Draw", 1, "Once per round, you can draw one additional weapon and sheathe another as a free action. Alternately, you could do the same with any small sized object in your possession."),
+            new Feature("Fast Tracker", 2, "You move unhindered and at full speed when tracking your quarry."),
+            new Feature("Ferocious Minions I", 2, "Creatures under the effects of your charmed or dominated banes, or those created by your invocation of the summon creature boon, gain advantage 1 on all attack rolls to protect you or act in your favor for each tier of this feat you possess."),
+            new Feature("Ferocious Minions II", 2, "Creatures under the effects of your charmed or dominated banes, or those created by your invocation of the summon creature boon, gain advantage 1 on all attack rolls to protect you or act in your favor for each tier of this feat you possess."),
+            new Feature("Ferocious Minions III", 2, "Creatures under the effects of your charmed or dominated banes, or those created by your invocation of the summon creature boon, gain advantage 1 on all attack rolls to protect you or act in your favor for each tier of this feat you possess."),
+            new Feature("Fleet of Foot I", 2, "Your speed is permanently increased by 5' per tier of this feat."),
+            new Feature("Fleet of Foot II", 2, "Your speed is permanently increased by 5' per tier of this feat."),
+            new Feature("Fleet of Foot III", 2, "Your speed is permanently increased by 5' per tier of this feat."),
+            new Feature("Flying", 3, "You gain a flight speed equal to your normal speed. At the GM's discretion, certain hostile actions may be capable of canceling your flight, sending you hurtling to your doom. If your flight is anatomical, the immobile bane might render your wings immovable. If telekinetic, an application of the nullify bane may cancel your flight."),
+            new Feature("Great Leap I", 1, "You can use your Movement or Agility score instead of your Might score when determining how far you can jump. In addition, you gain advantage 1 per tier on action rolls to jump."),
+            new Feature("Great Leap II", 1, "You can use your Movement or Agility score instead of your Might score when determining how far you can jump. In addition, you gain advantage 1 per tier on action rolls to jump."),
+            new Feature("Great Leap III", 1, "You can use your Movement or Agility score instead of your Might score when determining how far you can jump. In addition, you gain advantage 1 per tier on action rolls to jump."),
+            new Feature("Hallucination I", 3, "When you invoke the phantasm bane, you may choose to create a hallucination within a single target's mind instead of an illusion that is perceptible to everyone. You gain complete control over the target's senses (as granted by the power level of your bane), and thus the hallucination is not restricted by size or area. Your hallucination may only target a single creature and is not eligible for multi-targeting attacks. In addition, unless the target is damaged, they suffer disadvantage on resist rolls against the bane."),
+            new Feature("Hallucination II", 3, "When you invoke the hallucination form of the phantasm bane, you may target additional creatures within range as determined by your Influence score. This does not count as a multi-target attack and thus does not incur disadvantage on your action roll."),
+            new Feature("Heightened Invocation I", 2, "Too long, didn't write. Check the page."),
+            new Feature("Heightened Invocation II", 2, "Too long, didn't write. Check the page."),
+            new Feature("Heightened Invocation III", 2, "Too long, didn't write. Check the page."),
+            new Feature("Hospitaler", 2, "You can use a major action to give an ally an immediate resist roll (a free action for the ally) with advantage 1. Additionally, you gain advantage 1 any time you attempt to invoke the restoration boon."),
+            new Feature("Impervious Trance", 3, "While you are in a battle trance, you are immune to banes that target your Resolve. If you were already under the effect of such a bane, it is negated for the duration of your battle trance and returns when your battle trance ends."),
+            new Feature("Indomitable Endurance I", 2, "You are able to shrug off the effects of the fatigued bane. For each tier you possess in this feat, treat your fatigue level as one lower than it actually is for the purposes of determining the bane's effects."),
+            new Feature("Indomitable Endurance II", 2, "You are able to shrug off the effects of the fatigued bane. For each tier you possess in this feat, treat your fatigue level as one lower than it actually is for the purposes of determining the bane's effects."),
+            new Feature("Indomitable Endurance III", 2, "You are able to shrug off the effects of the fatigued bane. For each tier you possess in this feat, treat your fatigue level as one lower than it actually is for the purposes of determining the bane's effects."),
+            new Feature("Indomitable Endurance IV", 2, "You are able to shrug off the effects of the fatigued bane. For each tier you possess in this feat, treat your fatigue level as one lower than it actually is for the purposes of determining the bane's effects."),
+            new Feature("Indomitable Endurance V", 2, "You are able to shrug off the effects of the fatigued bane. For each tier you possess in this feat, treat your fatigue level as one lower than it actually is for the purposes of determining the bane's effects."),
+            new Feature("Indomitable Resolve I", 1, "For each tier you possess in this feat, your Resolve defense is increased by 1."),
+            new Feature("Indomitable Resolve II", 1, "For each tier you possess in this feat, your Resolve defense is increased by 1."),
+            new Feature("Indomitable Resolve III", 1, "For each tier you possess in this feat, your Resolve defense is increased by 1."),
+            new Feature("Inspiring Champion I", 2, "A single ally that can see the attack heals 1d4 HP."),
+            new Feature("Inspiring Champion II", 2, "A number of allies equal to your Presence score who can see the attack heal 1d4 HP."),
+            new Feature("Inspiring Champion III", 2, "All allies who can see the attack heal 2d4 HP."),
+            new Feature("Knowledge I", 2, "You automatically succeed on any action roll related to your chosen sphere of knowledge with a CR of 16 or lower. For higher CRs, your Learning attribute is considered to be 3 for the action roll unless your Learning score is already 3 or higher, in which case you gain advantage 1 on the roll."),
+            new Feature("Knowledge II", 2, "You automatically succeed on any action roll related to your chosen sphere of knowledge with a CR of 22 or lower. For higher CRs, your Learning attribute is considered to be 6 for the action roll unless your Learning score is already 6 or higher, in which case you gain advantage 1 on the roll."),
+            new Feature("Knowledge III", 2, "You automatically succeed on any action roll related to your chosen sphere of knowledge with a CR of 26 or lower. For higher CRs, your Learning attribute is considered to be 8 for the action roll unless your Learning score is already 8 or higher, in which case you gain advantage 1 on the roll."),
+            new Feature("Lethal Strike I", 3, "Advantage 1. Up to 5 lethal damage."),
+            new Feature("Lethal Strike II", 3, "Advantage 2. Up to 5 lethal damage."),
+            new Feature("Lethal Strike III", 3, "Advantage 3. Up to 10 lethal damage."),
+            new Feature("Lethal Strike IV", 3, "Advantage 4. Up to 10 lethal damage."),
+            new Feature("Lethal Strike V", 3, "Advantage 5. Up to 15 lethal damage."),
+            new Feature("Lethal Strike VI", 3, "Advantage 6. Up to 20 lethal damage."),
+            new Feature("Lethal Strike VII", 3, "Advantage 7. Up to 20 lethal damage."),
+            new Feature("Lethal Strike VIII", 3, "Advantage 8. Up to 25 lethal damage."),
+            new Feature("Lethal Strike IX", 3, "Advantage 9. Up to 25 lethal damage."),
+            new Feature("Lightning Reflexes I", 1, "For each tier you possess in this feat, you gain advantage 1 on all initiative rolls."),
+            new Feature("Lightning Reflexes II", 1, "For each tier you possess in this feat, you gain advantage 1 on all initiative rolls."),
+            new Feature("Lightning Reflexes III", 1, "For each tier you possess in this feat, you gain advantage 1 on all initiative rolls."),
+            new Feature("Lightning Reflexes IV", 1, "For each tier you possess in this feat, you gain advantage 1 on all initiative rolls."),
+            new Feature("Lightning Reflexes V", 1, "For each tier you possess in this feat, you gain advantage 1 on all initiative rolls."),
+            new Feature("Longshot", 1, "When you take this feat, select one weapon or attack type. Examples of attack types you include fire, cold, lightning, acid, poison, entropy, creation, and force - though this list is not exhaustive. With the chosen weapon or attack type, your range with that weapon or attribute is doubled."),
+            new Feature("Silencing Strike", 3, "Whenever you deal damage using a weapon with the precise property to a target that is caught off guard or otherwise unaware of the attack, such as when you are hidden from them, disguised as a friend, or have successfully deceived them, the target is afflicted with the silenced bane."),
+            new Feature("Martial Focus", 3, "Choose a single weapon (or choose unarmed combat), and specify the attribute that your martial focus relies upon: Agility or Might. When making attacks using your chosen weapon, your attribute is considered 1 greater for the purposes of determining attribute dice. Your attribute is not changed for purposes of feats, banes, boons, or similar items. Because of your intense focus on a single combat style, any attacks that you make without your martial focus suffer disadvantage 1."),
+            new Feature("Master Tracker", 1, "Unless blinded or thwarted through extraordinary means, you always know the direction of true north. In addition, once you successfully locate the trail of a target, you automatically succeed at all tracking attempts to continue following that trail for 7 days after the time you first picked it up. Only extraordinary concealment, targets in flight, or similarly exceptional cases can cause you to lose your mark."),
+            new Feature("Mimic", 2, "When you use the shapeshift boon, you may take on the features of a specific creature. For example, instead of merely transforming into an elf, you can assume the guise of Galdion the elven king. The disguise is near perfect for those examining you visually. If your behavior or other signs provide reasonable suspicion, an onlooker can attempt a Perception roll with a Challenge Rating equal to 10 + triple your Alteration or Deception score, whichever is higher. If they succeed, they will recognize your disguise."),
+            new Feature("Multi-Attack Specialist I", 3, "Too long, didn't write. Check the page."),
+            new Feature("Multi-Attack Specialist II", 3, "Too long, didn't write. Check the page."),
+            new Feature("Multi-Attack Specialist III", 3, "Too long, didn't write. Check the page."),
+            new Feature("Multi-Attack Specialist IV", 3, "Too long, didn't write. Check the page."),
+            new Feature("Multi-Attack Specialist V", 3, "Too long, didn't write. Check the page."),
+            new Feature("Multi-Attack Specialist VI", 3, "Too long, didn't write. Check the page."),
+            new Feature("Multi-Bane Specialist", 3, "Choose two banes that you are able to inflict and that share a common prerequisite attribute. You are able to inflict both banes with a single attack. The required attribute score for combining the banes is equal to the sum of their power levels (e.g., combining knockdown and slowed, both power level 1, would require an attribute score of 2). If the banes target different defenses, you choose which defense your attack targets. On a successful attack roll, the target is inflicted with both banes. They each persist independently of one another and must be resisted separately."),
+            new Feature("Multi-Target Attack Specialist I", 2, "When you choose this feat, you must decide to focus in area, ranged, or melee attacks. For each tier, you reduce the disadvantage penalty associated with multi-targeting for your chosen attack type by 1."),
+            new Feature("Multi-Target Attack Specialist II", 2, "When you choose this feat, you must decide to focus in area, ranged, or melee attacks. For each tier, you reduce the disadvantage penalty associated with multi-targeting for your chosen attack type by 1."),
+            new Feature("Multi-Target Attack Specialist III", 2, "When you choose this feat, you must decide to focus in area, ranged, or melee attacks. For each tier, you reduce the disadvantage penalty associated with multi-targeting for your chosen attack type by 1."),
+            new Feature("Multi-Target Attack Specialist IV", 2, "When you choose this feat, you must decide to focus in area, ranged, or melee attacks. For each tier, you reduce the disadvantage penalty associated with multi-targeting for your chosen attack type by 1."),
+            new Feature("Multi-Target Attack Specialist V", 2, "When you choose this feat, you must decide to focus in area, ranged, or melee attacks. For each tier, you reduce the disadvantage penalty associated with multi-targeting for your chosen attack type by 1."),
+            new Feature("Multi-Target Boon Expert", 3, "When multi-targeting a boon for which you have the Boon Focus feat, you do not need to make an action roll if the disadvantage normally incurred from multi-targeting is completely negated by your Multi-Target Boon Specialist feat. Your invocation automatically succeeds."),
+            new Feature("Multi-Target Boon Specialist I", 2, "For each tier of this feat, you reduce the disadvantage penalty associated with invoking boons for multiple targets by 1."),
+            new Feature("Multi-Target Boon Specialist II", 2, "For each tier of this feat, you reduce the disadvantage penalty associated with invoking boons for multiple targets by 1."),
+            new Feature("Multi-Target Boon Specialist III", 2, "For each tier of this feat, you reduce the disadvantage penalty associated with invoking boons for multiple targets by 1."),
+            new Feature("Multi-Target Boon Specialist IV", 2, "For each tier of this feat, you reduce the disadvantage penalty associated with invoking boons for multiple targets by 1."),
+            new Feature("Multi-Target Boon Specialist V", 2, "For each tier of this feat, you reduce the disadvantage penalty associated with invoking boons for multiple targets by 1."),
+            new Feature("Multi-Target Boon Specialist VI", 2, "For each tier of this feat, you reduce the disadvantage penalty associated with invoking boons for multiple targets by 1."),
+            new Feature("Multi-Target Boon Specialist VII", 2, "For each tier of this feat, you reduce the disadvantage penalty associated with invoking boons for multiple targets by 1."),
+            new Feature("Multi-Target Boon Specialist VIII", 2, "For each tier of this feat, you reduce the disadvantage penalty associated with invoking boons for multiple targets by 1."),
+            new Feature("Multi-Target Boon Specialist IX", 2, "For each tier of this feat, you reduce the disadvantage penalty associated with invoking boons for multiple targets by 1."),
+            new Feature("Natural Defense I", 2, "+1 bonus to Guard and Toughness."),
+            new Feature("Natural Defense II", 2, "+2 bonus to Guard and Toughness."),
+            new Feature("Natural Defense III", 2, "+3 bonus to Guard and Toughness."),
+            new Feature("Overpowering Strike", 2, "Each time you deal damage using a weapon that has the forceful property, you can choose to push the target five feet away from you."),
+            new Feature("Potent Bane", 3, "Choose one bane that you can invoke that has a duration of \"resist ends\". When a target makes a resist roll to shake off your invocation of the chosen bane, they have disadvantage 1."),
+            new Feature("Reactionary Trance", 2, "You can enter a battle trance (as per the Battle Trance feat) as a free action even when it is not your turn. You may choose to do so in reaction to another action, such as an enemy's attack, spell, or insult. You may even declare your intent to enter a battle trance after the action has been resolved (such as after the attack has already been rolled). The benefits granted from your battle trance take place before the triggering action is resolved, potentially negating damage or harmful effects that you would have otherwise incurred."),
+            new Feature("Reckless Attack", 3, "While you are in a battle trance, on your turn you may choose to inflict 5 hit points of damage on yourself to make an attack as a minor action. Effects that prevent or reduce damage cannot affect this self-inflicted damage. You suffer the damage before making your extra attack, so you must be able to remain conscious after the damage is dealt in order to benefit from your extra attack."),
+            new Feature("Resilient", 3, "Any time you make a resist roll, you have advantage 1 on the roll."),
+            new Feature("Sentinel I", 3, "Once per round, after you have expended your next major action to perform a defend action, you get an additional major action that must be spent before the start of your next turn to make another defend action. Multiple tiers of this feat grant additional major actions usable only for defend actions."),
+            new Feature("Sentinel II", 3, "Once per round, after you have expended your next major action to perform a defend action, you get an additional major action that must be spent before the start of your next turn to make another defend action. Multiple tiers of this feat grant additional major actions usable only for defend actions."),
+            new Feature("Sentinel III", 3, "Once per round, after you have expended your next major action to perform a defend action, you get an additional major action that must be spent before the start of your next turn to make another defend action. Multiple tiers of this feat grant additional major actions usable only for defend actions."),
+            new Feature("Skill Specialization I", 2, "Choose one attribute. Any time you make a roll using the chosen attribute that is not for initiative, attacks, invocations, or the defend action, you gain advantage 1 on the roll per tier of this feat you possess for that attribute."),
+            new Feature("Skill Specialization II", 2, "Choose one attribute. Any time you make a roll using the chosen attribute that is not for initiative, attacks, invocations, or the defend action, you gain advantage 1 on the roll per tier of this feat you possess for that attribute."),
+            new Feature("Skill Specialization III", 2, "Choose one attribute. Any time you make a roll using the chosen attribute that is not for initiative, attacks, invocations, or the defend action, you gain advantage 1 on the roll per tier of this feat you possess for that attribute."),
+            new Feature("Skill Specialization IV", 2, "Choose one attribute. Any time you make a roll using the chosen attribute that is not for initiative, attacks, invocations, or the defend action, you gain advantage 1 on the roll per tier of this feat you possess for that attribute."),
+            new Feature("Skill Specialization V", 2, "Choose one attribute. Any time you make a roll using the chosen attribute that is not for initiative, attacks, invocations, or the defend action, you gain advantage 1 on the roll per tier of this feat you possess for that attribute."),
+            new Feature("Superior Concentration I", 3, "When you take the sustain a boon minor action, you may sustain one additional boon per tier of this feat which you possess."),
+            new Feature("Superior Concentration II", 3, "When you take the sustain a boon minor action, you may sustain one additional boon per tier of this feat which you possess."),
+            new Feature("Superior Concentration III", 3, "When you take the sustain a boon minor action, you may sustain one additional boon per tier of this feat which you possess."),
+            new Feature("Swimming", 1, "You gain a swimming speed equal to your base speed and do not need to make any special action rolls to maintain this base speed."),
+            new Feature("Sworn Enemy I", 1, "Choose a species, race, or faction (e.g., dragons, Void Templars, gnolls, or vampires). You learn the primary conversational language of that species, and at the GM's discretion, you may have some level of access to other special forms of communication (such as thieves' cant or secret hand signals). Furthermore, you gain advantage 1 per tier of this feat to all Mental attribute rolls (Learning, Logic, Perception, and Will) pertaining to your chosen group."),
+            new Feature("Sworn Enemy II", 1, "Choose a species, race, or faction (e.g., dragons, Void Templars, gnolls, or vampires). You learn the primary conversational language of that species, and at the GM's discretion, you may have some level of access to other special forms of communication (such as thieves' cant or secret hand signals). Furthermore, you gain advantage 1 per tier of this feat to all Mental attribute rolls (Learning, Logic, Perception, and Will) pertaining to your chosen group."),
+            new Feature("Sworn Enemy III", 1, "Choose a species, race, or faction (e.g., dragons, Void Templars, gnolls, or vampires). You learn the primary conversational language of that species, and at the GM's discretion, you may have some level of access to other special forms of communication (such as thieves' cant or secret hand signals). Furthermore, you gain advantage 1 per tier of this feat to all Mental attribute rolls (Learning, Logic, Perception, and Will) pertaining to your chosen group."),
+            new Feature("Sworn Enemy IV", 1, "Choose a species, race, or faction (e.g., dragons, Void Templars, gnolls, or vampires). You learn the primary conversational language of that species, and at the GM's discretion, you may have some level of access to other special forms of communication (such as thieves' cant or secret hand signals). Furthermore, you gain advantage 1 per tier of this feat to all Mental attribute rolls (Learning, Logic, Perception, and Will) pertaining to your chosen group."),
+            new Feature("Sworn Enemy V", 1, "Choose a species, race, or faction (e.g., dragons, Void Templars, gnolls, or vampires). You learn the primary conversational language of that species, and at the GM's discretion, you may have some level of access to other special forms of communication (such as thieves' cant or secret hand signals). Furthermore, you gain advantage 1 per tier of this feat to all Mental attribute rolls (Learning, Logic, Perception, and Will) pertaining to your chosen group."),
+            new Feature("Sworn Enemy VI", 1, "Choose a species, race, or faction (e.g., dragons, Void Templars, gnolls, or vampires). You learn the primary conversational language of that species, and at the GM's discretion, you may have some level of access to other special forms of communication (such as thieves' cant or secret hand signals). Furthermore, you gain advantage 1 per tier of this feat to all Mental attribute rolls (Learning, Logic, Perception, and Will) pertaining to your chosen group."),
+            new Feature("Sworn Enemy VII", 1, "Choose a species, race, or faction (e.g., dragons, Void Templars, gnolls, or vampires). You learn the primary conversational language of that species, and at the GM's discretion, you may have some level of access to other special forms of communication (such as thieves' cant or secret hand signals). Furthermore, you gain advantage 1 per tier of this feat to all Mental attribute rolls (Learning, Logic, Perception, and Will) pertaining to your chosen group."),
+            new Feature("Sworn Enemy VIII", 1, "Choose a species, race, or faction (e.g., dragons, Void Templars, gnolls, or vampires). You learn the primary conversational language of that species, and at the GM's discretion, you may have some level of access to other special forms of communication (such as thieves' cant or secret hand signals). Furthermore, you gain advantage 1 per tier of this feat to all Mental attribute rolls (Learning, Logic, Perception, and Will) pertaining to your chosen group."),
+            new Feature("Sworn Enemy IX", 1, "Choose a species, race, or faction (e.g., dragons, Void Templars, gnolls, or vampires). You learn the primary conversational language of that species, and at the GM's discretion, you may have some level of access to other special forms of communication (such as thieves' cant or secret hand signals). Furthermore, you gain advantage 1 per tier of this feat to all Mental attribute rolls (Learning, Logic, Perception, and Will) pertaining to your chosen group."),
+            new Feature("Tough as Nails I", 2, "You permanently gain 5 extra hit points per tier of this feat you possess."),
+            new Feature("Tough as Nails II", 2, "You permanently gain 5 extra hit points per tier of this feat you possess."),
+            new Feature("Two Weapon Brute", 2, "You can wield weapons with the two-handed property in one hand and you gain the benefits of both the two-handed and one-handed property while doing so. This means that you gain a total of advantage 2 when wielding a two-handed weapon in each hand, advantage 1 from the power of a two-handed weapon plus advantage 1 from having one weapon in each hand."),
+            new Feature("Two Weapon Defense", 2, "When you wield a weapon you've taken the Attack Specialization feat for in each hand, you gain a +1 armor bonus to your Guard defense."),
+            new Feature("Unending Charm", 3, "When you invoke the charmed bane, targets who do not make their resist roll within 24 hours of being afflicted become permanently affected by the bane. They do not receive any more resist rolls to shake themselves free of the effect. Other extraordinary effects like a nullify bane can still end the effect (and other methods may work at the GM's discretion)."),
+            new Feature("Untrackable", 1, "Your travel is veiled by special means that conceal your tracks and any evidence of your passage even after you are far away. It is impossible to follow your tracks except by extraordinary means."),
+            new Feature("Vicious Strike", 2, "Any time you roll a natural 20 on the d20 for an attack action roll, you get advantage 1 on all subsequent d20 re-rolls granted by dice explosions."),
+            new Feature("Wealthy", 3, "Your wealth score is increased by 1."),
+            new Feature("Well-Rounded", 2, "Any time you use an attribute with a score of 2 or less to make an action roll outside of combat that is not a bane or boon invocation, you gain advantage 1 to the roll."),
+        ];
+    }
+
+    function UpdateFeatPoints() {
+
+        SetInnerHTML("spentFPoints", `Feat Points: ${fPointsSpent} / `);
+        SetValue("FPointTotal", totalFPoints);
+
+        if (fPointsSpent > totalFPoints) {
+            document.getElementById("overFSpent").style.visibility = "visible";
+        }
+        else {
+            document.getElementById("overFSpent").style.visibility = "hidden";
+        }
+    }
+
+    function ChangeMaxA(num) {
+        totalAPoints = num;
+    }
+
+    function ChangeMaxF(num) {
+        totalFPoints = num;
+    }
+
+    function AbilityValueChange(_changed, val) {
+        SetValue("APointTotal", totalAPoints);
+        var cost = costs[val];
+        var costDif = cost - GetInnerHTML(_changed + "Cost");
+        var d = dice[val];
+        document.getElementById(_changed + "Cost").innerHTML = cost;
+        document.getElementById(_changed + "Dice").innerHTML = d;
+        aPointsSpent += costDif;
+        SetInnerHTML("spentAPoints", `${aPointsSpent} / `);
+
+        CheckAPoints();
+        UpdateGuard();
+        UpdateToughness();
+        UpdateResolve();
+        UpdateHP();
+        UpdateInitiative();
+
+    }
+
+    function CheckAPoints() {
+        if (aPointsSpent > totalAPoints) {
+            document.getElementById("overASpent").style.visibility = "visible";
+        }
+        else {
+            document.getElementById("overASpent").style.visibility = "hidden";
+        }
+    }
+
+    function UpdateGuard() {
+        SetInnerHTML("Guard", (10 + parseInt(GetValue("Agility")) + parseInt(GetValue("Might")) + parseInt(GetValue("FeatGuard")) + parseInt(GetValue("ArmRating"))));
+    }
+
+    function UpdateToughness() {
+        SetInnerHTML("Tough", (10 + parseInt(GetValue("Fortitude")) + parseInt(GetValue("Will")) + parseInt(GetValue("FeatTough"))));
+    }
+
+    function UpdateResolve() {
+        SetInnerHTML("Resolve", (10 + parseInt(GetValue("Presence")) + parseInt(GetValue("Will")) + parseInt(GetValue("FeatRes"))));
+
+    }
+
+    function UpdateHP() {
+        SetInnerHTML("HP", curHP);
+        maxHP = (2 * (parseInt(GetValue("Fortitude")) + parseInt(GetValue("Will")) + parseInt(GetValue("Presence")))) + 10 + parseInt(GetValue("FeatHP"));
+        SetInnerHTML("maxHP", "max: " + maxHP);
+        SetValue("setHPVal", curHP);
+    }
+
+    function UpdateSpeed() {
+        SetInnerHTML("Speed", parseInt(speed) + parseInt(GetValue("FeatSpeed")));
+    }
+
+    function UpdateInitiative() {
+        SetInnerHTML("Initiative", `1d20\n+${GetInnerHTML("AgilityDice")}`);
+    }
+
+    function ChangeInnerStatByVal(stat, val) {
+        SetInnerHTML(stat, parseInt(GetInnerHTML(stat)) + val);
+        legend = parseInt(GetInnerHTML("Legend"));
+        wealth = parseInt(GetInnerHTML("Wealth"));
+        speed = parseInt(GetInnerHTML("Speed")) - GetValue("FeatSpeed");
+        console.log(speed);
+    }
+
+    function HealHP() {
+        curHP = parseInt(curHP) + parseInt(GetValue("healVal"));
+        SetInnerHTML("HP", curHP);
+        SetValue("healVal", 0);
+        SetValue("setHPVal", curHP);
+    }
+
+    function DamageHP() {
+        curHP -= parseInt(GetValue("damageVal"));
+        SetInnerHTML("HP", curHP);
+        SetValue("damageVal", 0);
+        SetValue("setHPVal", curHP);
+    }
+
+    function LethalDamageHP() {
+        maxHP -= parseInt(GetValue("lethalVal"));
+        SetInnerHTML("maxHP", `max: ${maxHP}`)
+        SetValue("damageVal", GetValue("lethalVal"));
+        DamageHP();
+        SetValue("lethalVal", 0);
+    }
+
+    function SetHP() {
+        curHP = GetValue("setHPVal");
+        SetInnerHTML("HP", curHP);
+
+    }
+
+    function ResetHP() {
+        curHP = maxHP;
+        SetInnerHTML("HP", curHP);
+        SetValue("setHPVal", curHP);
+    }
+
+    function NewFileChosen() {
+        file = document.querySelector('input').files[0];
+    }
+
+    function SaveData() {
+
+        var textToSave = DataToSave();
+        var textToSaveAsBlob = new Blob([textToSave], { type: "text/plain" });
+        var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+        var fileNameToSaveAs = `${GetValue("CharName")}CharacterSheet.txt`;
+
+        var downloadLink = document.createElement("a");
+        downloadLink.download = fileNameToSaveAs;
+        downloadLink.innerHTML = "Download File";
+        downloadLink.href = textToSaveAsURL;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+
+        downloadLink.click();
+
+    }
+
+    function LoadData() {
+
+        let reader = new FileReader();
+
+        reader.onload = (e) => {
+            var file = e.target.result;
+            var lines = file.split(/\r\n|\n/);
+
+            PresentLoadedData(lines);
+
+        };
+
+        reader.oner = (e) => alert(e.target.error.name);
+
+        reader.readAsText(file);
+
+    }
+
+    function DataToSave() {
+        var data = "";
+
+        for (var i = 0; i < abilities.length; i++) {
+            data += document.getElementById(abilities[i]).value;
+            data += '\n';
+        }
+        data += GetValue("CharName");
+        data += '\n';
+        data += GetValue("PlayerName");
+        data += '\n';
+        data += GetValue("Archetype");
+        data += '\n';
+        data += GetValue("Level");
+        data += '\n';
+        data += GetValue("XP");
+        data += '\n';
+        data += curHP;
+        data += '\n';
+
+        for (var i = 0; i < featsTaken.length; i++) {
+            data += featsTaken[i];
+            data += '\n';
+        }
+
+        data += totalFPoints;
+        data += '\n';
+        data += totalAPoints;
+        data += '\n';
+
+        data += legend;
+        data += '\n';
+        data += wealth;
+        data += '\n';
+        data += speed;
+        data += '\n';
+
+        data += acTable.children.length;
+        data += '\n';
+
+        for (var i = 1; i < acTable.children.length; i++) {
+
+            var tr = acTable.children[i];
+
+            data += tr.children[0].textContent;
+            data += '\n';
+            data += "NEnd"
+            data += '\n';
+
+            var st = tr.children[1].firstChild.value;
+            //console.log(st);
+            data += st;
+            data += '\n';
+            //for (var i = 0; i < st.length; i++) {
+            //    console.log(st[i]);
+            //}
+
+            data += "DEnd"
+            data += '\n';
+
+            //data += "AtStart"
+            //data += '\n';
+            data += tr.children[2].textContent;
+            data += '\n';
+            data += "AtEnd"
+            data += '\n';
+
+            data += "AcEnd"
+            data += '\n';
+
+        }
+
+        data += iTable.children.length;
+        data += '\n';
+
+        for (var i = 1; i < iTable.children.length; i++) {
+
+            var tr = iTable.children[i];
+
+            data += tr.children[0].textContent;
+            data += '\n';
+            data += "NEnd"
+            data += '\n';
+
+            var st = tr.children[1].firstChild.value;
+            //console.log(st);
+            data += st;
+            data += '\n';
+
+            data += "DEnd"
+            data += '\n';
+
+            //data += "AtStart"
+            //data += '\n';
+            data += tr.children[2].textContent;
+            data += '\n';
+            data += "AtEnd"
+            data += '\n';
+
+            data += "AcEnd"
+            data += '\n';
+
+        }
+
+        data += GetInnerHTML("ArmName");
+        data += '\n';
+
+        data += GetValue("ArmRating");
+        data += '\n';
+
+        data += GetValue("FeatGuard");
+        data += '\n';
+
+        data += GetValue("FeatHP");
+        data += '\n';
+
+        data += GetValue("FeatTough");
+        data += '\n';
+
+        data += GetValue("FeatSpeed");
+        data += '\n';
+
+        data += GetValue("FeatRes");
+        data += '\n';
+
+        return data;
+    }
+
+    function PresentLoadedData(data) {
+
+        SetValue("CharName", data[18]);
+        document.title = `Open Legend | ${data[18]}`;
+        SetValue("PlayerName", data[19]);
+        SetValue("Archetype", data[20]);
+        SetValue("Level", data[21]);
+        SetValue("XP", data[22]);
+        curHP = data[23];
+        UpdateHP();
+        var numOfFeats = parseInt(data[24]);
+        for (var i = 0; i < numOfFeats; i++) {
+            AddFeatByNumber(data[25 + i]);
+        }
+        totalFPoints = parseInt(data[25 + numOfFeats]);
+        totalAPoints = parseInt(data[26 + numOfFeats]);
+
+        UpdateFeatPoints();
+
+        for (var i = 0; i < abilities.length; i++) {
+            ChangeAbilityValue(abilities[i], data[i]);
+        }
+
+        legend = data[27 + numOfFeats];
+        SetInnerHTML("Legend", legend);
+        wealth = data[28 + numOfFeats];
+        SetInnerHTML("Wealth", wealth);
+        speed = data[29 + numOfFeats];
+        SetInnerHTML("Speed", speed);
+
+        var pos = 31 + numOfFeats;
+
+        for (var i = 0; i < data[30 + numOfFeats] - 1; i++) {
+            var nam = "";
+            var des = "";
+            var att = "";
+            while (data[pos] != "AcEnd") {
+                while (data[pos] != "NEnd") {
+                    nam += data[pos];
+                    console.log(pos + " " + data[pos]);
+                    if (data[pos + 1] != "NEnd")
+                        nam += "\n";
+                    pos += 1;
+                }
+                pos += 1;
+                while (data[pos] != "DEnd") {
+                    des += data[pos];
+                    console.log(pos + " " + data[pos]);
+                    if (data[pos + 1] != "DEnd")
+                        des += "\n";
+                    pos += 1;
+                }
+                pos += 1;
+                while (data[pos] != "AtEnd") {
+                    att += data[pos];
+                    console.log(pos + " " + data[pos]);
+                    if (data[pos + 1] != "AtEnd")
+                        att += "\n";
+                    pos += 1;
+                }
+                pos += 1;
+            }
+            console.log(pos + " " + data[pos]);
+            pos += 1;
+            var tr = document.createElement("tr");
+            var n = document.createElement("td");
+            n.textContent = nam;
+            n.contentEditable = "true";
+
+            var d = document.createElement("td");
+            //d.textContent = des;
+            //d.contentEditable = "true";
+            var dt = document.createElement("textarea");
+            dt.value = des;
+            d.appendChild(dt);
+
+            var a = document.createElement("td");
+            a.textContent = att;
+            a.contentEditable = "true";
+
+            var b = document.createElement("button");
+            b.innerHTML = "X";
+            b.name = acTable.children.length;
+            b.onclick = function () {
+                acTable.removeChild(acTable.children[b.name]);
+                for (var i = 0; i < acTable.children.length; i++) {
+                    acTable.children[i].lastChild.name = i;
+                }
+                RefreshActionButtons();
+            };
+
+            /*
+             * var but = document.createElement("button");
+        but.innerHTML = "X";
+        but.id = acTable.children.length;
+        but.onclick = function () {
+            acTable.removeChild(acTable.children[but.id]);
+            for (var i = 0; i < acTable.children.length; i++) {
+                acTable.children[i].lastChild.id = i;
+            }
+        };
+             */
+
+            tr.appendChild(n);
+            tr.appendChild(d);
+            tr.appendChild(a);
+            tr.appendChild(b);
+            acTable.appendChild(tr);
+        }
+
+        var start = pos;
+
+        for (var i = 0; i < data[start] - 1; i++) {
+            var nam = "";
+            var des = "";
+            var att = "";
+            while (data[pos] != "AcEnd") {
+                while (data[pos] != "NEnd") {
+                    nam += data[pos];
+                    console.log(pos + " " + data[pos]);
+                    if (data[pos + 1] != "NEnd")
+                        nam += "\n";
+                    pos += 1;
+                }
+                pos += 1;
+                while (data[pos] != "DEnd") {
+                    des += data[pos];
+                    console.log(pos + " " + data[pos]);
+                    if (data[pos + 1] != "DEnd")
+                        des += "\n";
+                    pos += 1;
+                }
+                pos += 1;
+                while (data[pos] != "AtEnd") {
+                    att += data[pos];
+                    console.log(pos + " " + data[pos]);
+                    if (data[pos + 1] != "AtEnd")
+                        att += "\n";
+                    pos += 1;
+                }
+                pos += 1;
+            }
+            pos += 1;
+            var tr = document.createElement("tr");
+            var n = document.createElement("td");
+            n.textContent = nam;
+            n.contentEditable = "true";
+
+            var d = document.createElement("td");
+            //d.textContent = des;
+            //d.contentEditable = "true";
+            var dt = document.createElement("textarea");
+            dt.value = des;
+            d.appendChild(dt);
+
+            var a = document.createElement("td");
+            a.textContent = att;
+            a.contentEditable = "true";
+
+            var b = document.createElement("button");
+            b.name = iTable.children.length;
+            b.onclick = function () {
+                iTable.removeChild(iTable.children[b.name]);
+                for (var i = 0; i < iTable.children.length; i++) {
+                    iTable.children[i].lastChild.name = i;
+                }
+                RefreshItemButtons();
+            };
+            b.textContent = "X";
+
+            tr.appendChild(n);
+            tr.appendChild(d);
+            tr.appendChild(a);
+            tr.appendChild(b);
+            iTable.appendChild(tr);
+        }
+
+        SetInnerHTML("ArmName", data[pos]);
+
+        SetValue("ArmRating", data[pos + 1]);
+        SetValue("FeatGuard", data[pos + 2]);
+        SetValue("FeatHP", data[pos + 3]);
+        SetValue("FeatTough", data[pos + 4]);
+        SetValue("FeatSpeed", data[pos + 5]);
+        SetValue("FeatRes", data[pos + 6]);
+
+        UpdateGuard();
+        UpdateHP();
+        UpdateToughness();
+        UpdateResolve();
+        UpdateSpeed();
+
+    }
+
+    function AddFeatByNumber(num) {
+
+        var row = document.createElement("tr");
+        var name = document.createElement("td");
+        var cost = document.createElement("td");
+        var but = document.createElement("button");
+        name.innerHTML = feats[num].name;
+        name.value = num;
+        cost.innerHTML = feats[num].cost;
+        but.id = fTable.children.length;
+        but.onclick = function () {
+            var featIndex = -1;
+            for (var i = 1; i < featsTaken.length; i++) {
+                if (parseInt(featsTaken[i]) == parseInt(fTable.children[but.id].firstChild.value)) {
+                    featIndex = i;
+                    break;
+                }
+            }
+            if (featIndex > 0) {
+                featsTaken.splice(featIndex, 1);
+                featsTaken[0] = featsTaken.length - 1;
+            }
+            fPointsSpent -= parseInt(fTable.children[but.id].children[1].innerHTML);
+            UpdateFeatPoints();
+            fTable.removeChild(fTable.children[but.id]);
+            for (var i = 0; i < fTable.children.length; i++) {
+                fTable.children[i].lastChild.id = i;
+            }
+
+        };
+        but.innerHTML = "X";
+
+        row.appendChild(name);
+        row.appendChild(cost);
+        row.appendChild(but);
+
+        fTable.appendChild(row);
+
+        fPointsSpent += parseInt(cost.innerHTML);
+        UpdateFeatPoints();
+
+        featsTaken[0] = featsTaken.push(num) - 1;
+
+    }
+
+    function ChangeAbilityValue(index, value) {
+        document.getElementById(index).value = value;
+        AbilityValueChange(index, value);
+    }
+
+    function GetInnerHTML(id) {
+        return document.getElementById(id).innerHTML;
+    }
+
+    function GetValue(id) {
+        return document.getElementById(id).value;
+    }
+
+    function SetInnerHTML(id, value) {
+        document.getElementById(id).innerHTML = value;
+    }
+
+    function SetValue(id, value) {
+        document.getElementById(id).value = value;
+    }
+
+    class Feature {
+        constructor(name, cost, effect) {
+            this.name = name;
+            this.cost = cost;
+            this.effect = effect;
+        }
+    }
+
+</script>
