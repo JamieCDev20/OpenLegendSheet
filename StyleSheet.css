@@ -11,7 +11,15 @@ td, th {
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: black;
+}
+
+a:link {
+    color: white;
+}
+
+a:visited{
+    color: lightgray;
 }
 
 inline{
